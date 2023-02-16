@@ -1,0 +1,117 @@
+{
+  "sessions": [
+    {
+      "id": "1308608098:1308608098",
+      "data": {
+        "__scenes": {
+          "current": "USER_STARTED_SCENE",
+          "state": {}
+        },
+        "path": "home",
+        "uploadAreaId": null
+      }
+    },
+    {
+      "id": "1884297416:1884297416",
+      "data": {
+        "__scenes": {
+          "current": "ADMIN_CHANNELS_SCENE",
+          "state": {}
+        },
+        "path": "home",
+        "area": null,
+        "writeMessageId": 3614,
+        "channel": null,
+        "currentChannelsMenu": 3612,
+        "keyboard": {
+          "inline_keyboard": [
+            [
+              {
+                "text": "⚪️ Сушка и обжиг",
+                "callback_data": "subscribe_false_area_1"
+              }
+            ],
+            [
+              {
+                "text": "🟢 Начальник смены",
+                "callback_data": "subscribe_true_area_2"
+              }
+            ],
+            [
+              {
+                "text": "⚪️ Лаборатория",
+                "callback_data": "subscribe_false_area_3"
+              }
+            ],
+            [
+              {
+                "text": "🟢 Готовая продукция",
+                "callback_data": "subscribe_true_area_4"
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "-1001819788014:1884297416",
+      "data": {
+        "__scenes": {}
+      }
+    },
+    {
+      "id": "-1001874560239:1884297416",
+      "data": {
+        "__scenes": {}
+      }
+    },
+    {
+      "id": "-1001885041570:1884297416",
+      "data": {
+        "__scenes": {}
+      }
+    },
+    {
+      "id": "-1001792159090:1884297416",
+      "data": {
+        "__scenes": {}
+      }
+    },
+    {
+      "id": "-1001819788014:136817688",
+      "data": {
+        "__scenes": {}
+      }
+    },
+    {
+      "id": "-1001885041570:136817688",
+      "data": {
+        "__scenes": {}
+      }
+    },
+    {
+      "id": "-1001885041570:6225550594",
+      "data": {
+        "__scenes": {}
+      }
+    },
+    {
+      "id": "-1001874560239:6225550594",
+      "data": {
+        "__scenes": {}
+      }
+    },
+    {
+      "id": "-1001819788014:6225550594",
+      "data": {
+        "__scenes": {}
+      }
+    },
+    {
+      "id": "-1001792159090:6225550594",
+      "data": {
+        "__scenes": {}
+      }
+    }
+  ]
+}
