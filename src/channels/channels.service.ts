@@ -8,6 +8,7 @@ import { Channel } from './models/channel.model';
 import { SubscribesService } from 'src/subscribes/subscribes.service';
 import { FilesService } from 'src/files/files.service';
 import { AreasService } from 'src/areas/areas.service';
+import { UsersService } from 'src/users/users.service';
 
 
 @Injectable()
@@ -20,10 +21,12 @@ export class ChannelService {
       private subscribeService: SubscribesService,
       private fileService: FilesService,
       private areaService: AreasService,
+      private userService: UsersService
       // private parserService: ParserService
    ) {}
    async check() {
       const channels = await this.getAllChannels()
+      const admins = await this.userService.getAllAdmin()
       for (let channel of channels) {
          const subscribes = await this.subscribeService.findByChannel(channel.id)
          for (let subscribe of subscribes) {
@@ -39,6 +42,9 @@ export class ChannelService {
                }
             } catch (error) {
                console.log(channel.tgId)
+               admins.map(async (user) => {
+                  await this.bot.telegram.sendMessage(user.tgId, `Удалите и добавьте бота в канал "${channel.name}" повторно`)
+               })
                console.log('Чат удалён или ещё не добавлен')
             }
          }

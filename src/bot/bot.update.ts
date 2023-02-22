@@ -28,8 +28,14 @@ export class BotUpdate {
    }
    @On('contact')
    async contact(ctx: Context) {
-      const { phone_number, user_id } = ctx.update['message'].contact
-      const userExist = await this.usersService.authUser(phone_number, user_id)
+      console.log(ctx.update['message'])
+      let { phone_number, user_id } = ctx.update['message'].contact
+      console.log(ctx.update['message'])
+      console.log(phone_number)
+      if(!phone_number.split('+')[1]) {
+         phone_number = '+' + phone_number
+      }
+      const userExist = await this.usersService.authUser(phone_number, user_id.toString())
       if(userExist) {
          await ctx.reply('Вы успешно авторизованы 🔐')
          ctx['scene'].enter(USER_STARTED_SCENE)
@@ -69,6 +75,7 @@ export class BotUpdate {
    async checkUser(ctx) {
       const sender = ctx.message.from
       const user = await this.usersService.findById(sender.id)
+      console.log(sender.id)
       if(!user) {
          await ctx.reply('⛔️ У вас нет доступа к боту')
          await this.bot.telegram.sendMessage(sender.id, 'Авторизация по номеру телефона', {

@@ -15,14 +15,14 @@
       "id": "1884297416:1884297416",
       "data": {
         "__scenes": {
-          "current": "ADMIN_CHANNELS_SCENE",
+          "current": "ADMIN_STARTED_SCENE",
           "state": {}
         },
-        "path": "home",
-        "area": null,
-        "writeMessageId": 3614,
+        "path": "editPhone",
+        "area": 1,
+        "writeMessageId": null,
         "channel": null,
-        "currentChannelsMenu": 3612,
+        "currentChannelsMenu": 599,
         "keyboard": {
           "inline_keyboard": [
             [
@@ -50,7 +50,8 @@
               }
             ]
           ]
-        }
+        },
+        "uploadAreaId": null
       }
     },
     {
@@ -109,6 +110,78 @@
     },
     {
       "id": "-1001792159090:6225550594",
+      "data": {
+        "__scenes": {}
+      }
+    },
+    {
+      "id": "673884609:673884609",
+      "data": {
+        "__scenes": {
+          "current": "ADMIN_STARTED_SCENE",
+          "state": {}
+        },
+        "path": "home",
+        "uploadAreaId": 2,
+        "writeMessageId": null,
+        "channel": null,
+        "currentChannelsMenu": 476,
+        "area": 4,
+        "keyboard": {
+          "inline_keyboard": [
+            [
+              {
+                "text": "⚪️ Сушка и обжиг",
+                "callback_data": "subscribe_false_area_1"
+              }
+            ],
+            [
+              {
+                "text": "⚪️ Начальник смены",
+                "callback_data": "subscribe_false_area_2"
+              }
+            ],
+            [
+              {
+                "text": "🟢 Лаборатория",
+                "callback_data": "subscribe_true_area_3"
+              }
+            ],
+            [
+              {
+                "text": "🟢 Готовая продукция",
+                "callback_data": "subscribe_true_area_4"
+              }
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "-1001829431693:673884609",
+      "data": {
+        "__scenes": {}
+      }
+    },
+    {
+      "id": "6000684890:6000684890",
+      "data": {
+        "__scenes": {
+          "current": "USER_STARTED_SCENE",
+          "state": {}
+        },
+        "path": "home",
+        "uploadAreaId": 1
+      }
+    },
+    {
+      "id": "-1001693215916:673884609",
+      "data": {
+        "__scenes": {}
+      }
+    },
+    {
+      "id": "-1001829431693:6248422675",
       "data": {
         "__scenes": {}
       }

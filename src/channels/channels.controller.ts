@@ -13,6 +13,7 @@ export class ChannelController implements OnModuleInit {
 
    @Get('test')
    async test(@Body() body: any, @Req() req: any) {
+      // console.log('test')
       await this.channelService.check()
    }
    @Get('check')

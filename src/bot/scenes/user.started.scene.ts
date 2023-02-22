@@ -16,7 +16,7 @@ export class UserStartedScene {
    ) {}
    @Start()
    async onStart(ctx: Context) {
-      ctx['scene'].enter(USER_STARTED_SCENE)
+      ctx['scene'].leave()
    }
    @SceneEnter()
    async onSceneEnter(ctx: Context) {
@@ -38,19 +38,23 @@ export class UserStartedScene {
             const extenion = {
                xls: doc.file_name.split('.xls'), xlsx: doc.file_name.split('.xlsx')
             }
-            if(extenion.xls[1] || extenion.xlsx[1]) {
+            if(extenion.xls.length === 2 || extenion.xlsx.length === 2) {
                if((extenion.xls[1].length === 0) || extenion.xlsx[1].length === 0) {
+                  isExces = true
                   const { name } = await this.areaService.findById(ctx.session['uploadAreaId'])
                   await this.fileService.addFile(
                      doc.file_name, doc.file_id, ctx.session['uploadAreaId']
                   )
                   await ctx.reply(`✅`)
-                  await ctx.reply(`Отчёт участка "${name}" успешно загружен!`)
-                  isExces = true
+                  const msg = await ctx.reply(`Отчёт участка "${name}" успешно загружен!`)
+                  await ctx.telegram.deleteMessage(msg.chat.id, ctx.update['message'].message_id)
                   await this.startedKeyboard(ctx)
                }
             }
-            if(!isExces) await ctx.reply('Допустимые форматы к загрузке: *.xls или *.xlsx')
+            if(!isExces) {
+               await ctx.reply('Допустимые форматы к загрузке: *.xls или *.xlsx')
+               return
+            }
          }
       } else {
          await ctx.reply('Участок не выбран')
