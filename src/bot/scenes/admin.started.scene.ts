@@ -29,7 +29,7 @@ export class AdminStartedScene {
    }
    @Hears('✉️ Тест рассылки')
    async test(ctx) {
-      await fetch('http://localhost:4000/channels/test')
+      await fetch('http://localhost:4444/channels/test')
    }
    async started(ctx) {
       await ctx.reply('⚙️ ВЫБЕРИТЕ РАЗДЕЛ ДЛЯ РЕДАКТИРОВАНИЯ:',

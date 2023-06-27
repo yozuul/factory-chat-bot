@@ -13,12 +13,13 @@ export class ChannelController implements OnModuleInit {
 
    @Get('test')
    async test(@Body() body: any, @Req() req: any) {
-      // console.log('test')
+      console.log('КОНТРОЛЛЕР ТЕСТ')
       await this.channelService.check()
    }
    @Get('check')
    async checkProducts(@Body() body: any, @Req() req: any) {
       console.log(req.headers.key)
+      console.log('КОНТРОЛЛЕР МЕТОД check')
       if(req.headers.key && req.headers.key === process.env.SECRET) {
          await this.channelService.check()
       } else {

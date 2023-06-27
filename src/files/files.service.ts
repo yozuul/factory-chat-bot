@@ -19,6 +19,9 @@ export class FilesService {
          }
       })
    }
+   async getAllFiles() {
+      return this.fileRepository.findAll({})
+   }
    async getByAreaId(areaId) {
       return this.fileRepository.findOne({
          where: { areaId: areaId }

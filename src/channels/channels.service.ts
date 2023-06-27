@@ -24,21 +24,38 @@ export class ChannelService {
       private userService: UsersService
       // private parserService: ParserService
    ) {}
+   async sendMsg(text) {
+      try {
+         await this.bot.telegram.sendMessage(1884297416, text)
+      } catch (error) {
+         console.log(error)
+         await this.bot.telegram.sendMessage(1884297416, 'JIB<RF')
+      }
+   }
    async check() {
+      const date = new Date()
+      console.log('ЧЕК НАЧАЛО', date)
+      await this.sendMsg('ЧЕК НАЧАЛО: ' + date)
       const channels = await this.getAllChannels()
+      console.log("ПОЛУЧИЛИ КАНАЛЫ", channels)
       const admins = await this.userService.getAllAdmin()
+      const files = await this.fileService.getAllFiles()
+      await this.fileService.deleteAll()
       for (let channel of channels) {
+         console.log('channel.id', channel.id)
+         await this.sendMsg('КАНАЛ: ' + channel.id)
          const subscribes = await this.subscribeService.findByChannel(channel.id)
+         // console.log('subscribes', subscribes)
          for (let subscribe of subscribes) {
-            const file = await this.fileService.getByAreaId(subscribe.areaId)
+            await this.sendMsg('ПОДПИСКА: ' + subscribe.areaId)
+            console.log('ОТПРАВЛЯЕМ', subscribe.areaId)
+            const file = files.filter((file) => file.areaId === subscribe.areaId)
             const area = await this.areaService.findById(subscribe.areaId)
             try {
-               if(file) {
-                  await this.bot.telegram.sendDocument(channel.tgId, file.tgId, {
+               if(file.length === 1) {
+                  await this.bot.telegram.sendDocument(channel.tgId, file[0].tgId, {
                      caption: `Отчёт участка "${area.name}"`,
                   })
-               } else {
-                  await this.bot.telegram.sendMessage(channel.tgId, `Отчёт участка "${area.name}" не был загружен`)
                }
             } catch (error) {
                console.log(channel.tgId)
@@ -49,7 +66,8 @@ export class ChannelService {
             }
          }
       }
-      await this.fileService.deleteAll()
+      console.log('ЗАКНЧИЛИ РАССЫЛКУ', date)
+      await this.sendMsg('ЧЕК КОНЕЦ: ' + date)
    }
    async addChannel(dto) {
       const newChannel = await this.channelRepository.create(dto)
