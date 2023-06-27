@@ -1,6 +1,7 @@
 **/.*/
 **/.*.*
-./.env
+.env
+factory.db
 **/node_modules/
 # compiled output
 /dist
